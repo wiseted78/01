@@ -1,0 +1,89 @@
+```html
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Қарапайым калькулятор</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 8px;
+            width: 200px;
+        }
+
+        button {
+            display: block;
+            margin: 7px auto;
+            padding: 8px 25px;
+            cursor: pointer;
+        }
+
+        #result {
+            font-size: 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Қарапайым калькулятор</h1>
+
+    <label>Сан 1:</label>
+    <input type="number" id="num1">
+
+    <label>Сан 2:</label>
+    <input type="number" id="num2">
+
+    <div id="result">Нәтиже: </div>
+
+    <button onclick="calculate('+')">Қосу</button>
+    <button onclick="calculate('-')">Алу</button>
+    <button onclick="calculate('*')">Көбейту</button>
+    <button onclick="calculate('/')">Бөлу</button>
+
+    <script>
+        function calculate(operation) {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let result = document.getElementById("result");
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result.textContent = "Қате: Сан енгізіңіз!";
+                return;
+            }
+
+            if (operation === "+") {
+                result.textContent = "Нәтиже: " + (num1 + num2);
+            }
+
+            else if (operation === "-") {
+                result.textContent = "Нәтиже: " + (num1 - num2);
+            }
+
+            else if (operation === "*") {
+                result.textContent = "Нәтиже: " + (num1 * num2);
+            }
+
+            else if (operation === "/") {
+                if (num2 === 0) {
+                    result.textContent = "Нөлге бөлу мүмкін емес!";
+                    return;
+                }
+
+                result.textContent = "Нәтиже: " + (num1 / num2);
+            }
+        }
+    </script>
+
+</body>
+</html>
+```
